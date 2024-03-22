@@ -2,6 +2,23 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "quill/dist/quill.core.css";
+@import "quill/dist/quill.bubble.css";
+@import "quill/dist/quill.snow.css";
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.css";
+// @import "node_modules/ngx-spinner/animations/ball-scale-multiple.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  // background-color: $body-color;
+  // font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .centered-flex-container {
   display: flex;
   justify-content: center;

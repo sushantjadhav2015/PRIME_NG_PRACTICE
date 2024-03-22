@@ -1,0 +1,31 @@
+:host ::ng-deep p-messages .p-messages .p-message.p-message-success {
+    background: #e4f8f0;
+    border: solid #76db9b;
+    border-width: 1px;
+    color: #1ea97c;
+}
+
+:host ::ng-deep p-messages .p-messages .p-message.p-message-info {
+    background: #e9e9ff;
+    border: solid #696cff;
+    border-width: 1px;
+    color: #696cff;
+}
+
+:host ::ng-deep p-messages .p-messages .p-message.p-message-warn {
+    background: #fff2e2;
+    border: solid #cc8925;
+    border-width: 1px;
+    color: #cc8925;
+}
+
+:host ::ng-deep p-messages .p-messages .p-message.p-message-error {
+    background: #ffe7e6;
+    border: solid #ff5757;
+    border-width: 1px;
+    color: #ff5757;
+}
+
+:host ::ng-deep .p-message .p-message-wrapper {
+    padding: 1rem 1.25rem;
+}
