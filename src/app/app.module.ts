@@ -15,6 +15,7 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule,
 } from '@abacritt/angularx-social-login';
+import { AppLayoutModule } from './app-layout/app-layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import {
     AppRoutingModule,
     BrowserAnimationsModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    AppLayoutModule,
   ],
   providers: [
     provideClientHydration(),

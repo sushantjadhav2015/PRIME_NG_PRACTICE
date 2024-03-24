@@ -1,42 +1,37 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, computed } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ALERT_TYPE } from '../../constants/app-constatnt';
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { AlertService } from './alert.service';
 
 @Component({
   selector: 'alert',
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.scss',
-  providers:[MessageService]
+  providers: [DialogService, MessageService, DynamicDialogRef,DynamicDialogConfig]
 })
-export class AlertComponent {
+
+export class AlertComponent implements OnInit{
   severity = ALERT_TYPE
   alertStyle?: string
+  data: any
+  msgFromService = {} as any
 
-  constructor (
-    public messageService: MessageService
-  ) { }
+  constructor(
+    public ref: DynamicDialogRef, 
+    public config: DynamicDialogConfig,
+    public messageService: MessageService,
+    public dialogService: DialogService,
+    public alertService: AlertService
+  ) {}
 
   ngOnInit (): void {
+    this.data = this.alertService.getData();
+    const mesg = computed(() => this.data())
+    this.msgFromService = mesg()
+    console.log('new-alrt componnet', mesg());
+    this.success(this.msgFromService)
   }
-
-  // showAlert (alertType: string, alertMessage: string, alertTitle?: string, alertStyle?: string): any {
-  //   this.alertStyle = alertStyle
-
-  //   console.log(this.alertStyle)
-  //   switch (alertType) {
-  //     case 'success':
-  //       this.success(alertMessage, alertTitle)
-  //       break
-  //     case 'error':
-  //       this.error(alertMessage, alertTitle)
-  //       break
-  //     case 'info':
-  //       this.info(alertMessage, alertTitle)
-  //       break
-  //     case 'warn':
-  //       this.warn(alertMessage, alertTitle)
-  //   }
-  // }
 
   success (message: string, title?: string): any {
     this.show(this.severity.SUCCESS, message, title)
