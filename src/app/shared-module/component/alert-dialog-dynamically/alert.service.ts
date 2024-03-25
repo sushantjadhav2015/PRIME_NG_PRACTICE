@@ -25,7 +25,6 @@ export class AlertService {
     if (!this.opened) {
       this.opened = true;
       this.ref = this.dialogService.open(AlertComponent, {
-        header: 'Select a Product',
         width: '70%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
@@ -44,9 +43,7 @@ export class AlertService {
 
 
   private data = signal('');
-
   message = computed(() => this.data());
-
   setData(update: any) {
     this.data.set(update);
   }

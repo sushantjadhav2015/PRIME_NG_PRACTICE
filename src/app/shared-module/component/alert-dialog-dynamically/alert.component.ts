@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, computed } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { ALERT_TYPE } from '../../constants/app-constatnt';
+import { SERVERITY } from '../../constants/app-constatnt';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AlertService } from './alert.service';
 
@@ -8,11 +8,10 @@ import { AlertService } from './alert.service';
   selector: 'alert',
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.scss',
-  providers: [DialogService, MessageService, DynamicDialogRef,DynamicDialogConfig]
 })
 
 export class AlertComponent implements OnInit{
-  severity = ALERT_TYPE
+  severity = SERVERITY
   alertStyle?: string
   data: any
   msgFromService = {} as any
@@ -30,7 +29,7 @@ export class AlertComponent implements OnInit{
     const mesg = computed(() => this.data())
     this.msgFromService = mesg()
     console.log('new-alrt componnet', mesg());
-    this.success(this.msgFromService)
+    this.success(this.msgFromService.msg)
   }
 
   success (message: string, title?: string): any {

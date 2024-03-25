@@ -5,19 +5,17 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import { AlertComponent } from '../shared-module/component/alert/alert.component';
+import { AlertComponent } from '../shared-module/component/alert-dialog-dynamically/alert.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
-    LoginComponent, 
-    HomeComponent, 
-    AdminComponent, 
+    LoginComponent,
+    HomeComponent,
+    AdminComponent,
     SideNavComponent,
-    AlertComponent
+    AlertComponent,
   ],
-  imports: [
-    SharedModuleModule,
-    GoogleSigninButtonModule
-  ],
+  imports: [SharedModuleModule, GoogleSigninButtonModule],
 })
 export class AppLayoutModule {}

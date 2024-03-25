@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -7,7 +7,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthInterceptor } from './auth/auth.interceptor';
+import { AuthInterceptor } from './interceptor-and-error/auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {
   FacebookLoginProvider,
@@ -16,9 +16,14 @@ import {
   SocialLoginModule,
 } from '@abacritt/angularx-social-login';
 import { AppLayoutModule } from './app-layout/app-layout.module';
+import { ToastComponent } from './toast/toast.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { NgComponentOutlet } from '@angular/common';
+// import { SharedModuleModule } from './shared-module/shared-module.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ToastComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,14 +31,22 @@ import { AppLayoutModule } from './app-layout/app-layout.module';
     SocialLoginModule,
     HttpClientModule,
     AppLayoutModule,
+    // SharedModuleModule
+    ToastModule,
+    NgComponentOutlet
   ],
   providers: [
+    MessageService,
     provideClientHydration(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
     },
+    // {
+    //   provide: ErrorHandler,
+    //   useClass: GlobalErrorHandler,
+    // },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -54,7 +67,7 @@ import { AppLayoutModule } from './app-layout/app-layout.module';
           console.error(err);
         },
       } as SocialAuthServiceConfig,
-    },
+    }
   ],
   bootstrap: [AppComponent],
 })

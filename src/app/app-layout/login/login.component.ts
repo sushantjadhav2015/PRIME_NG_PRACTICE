@@ -1,37 +1,45 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID, ViewChild, inject, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  Inject,
+  PLATFORM_ID,
+  ViewChild,
+  inject,
+  ComponentFactoryResolver,
+  ViewContainerRef,
+  OnInit,
+  AfterViewInit,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth-service.service';
+import { AuthService } from '../../shared-module/services/auth-service.service';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Router } from '@angular/router';
 import { PlaceholderDirective } from '../../shared-module/directive/placeholder.directive';
 import { Subscription } from 'rxjs';
-import { AlertComponent } from '../../shared-module/component/alert/alert.component';
+import { AlertComponent } from '../../shared-module/component/alert-dialog-dynamically/alert.component';
 import { MessageService } from 'primeng/api';
+import { ROUTES } from '../../shared-module/constants/routes-constant';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  providers: [MessageService]
+  // providers: [MessageService],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   rememberMe: boolean = false;
 
   user!: any;
   loggedIn!: boolean;
   closeSub!: Subscription;
-  @ViewChild(AlertComponent) alertComponent!: AlertComponent
+  @ViewChild(AlertComponent) alertComponent!: AlertComponent;
 
   constructor(
     private formBuilder: FormBuilder,
     private authservice: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
-    private ComponentFactoryResolver: ComponentFactoryResolver,
-    private messageService: MessageService
   ) {}
-
   socialAuthService = inject(SocialAuthService);
 
   ngOnInit(): void {
@@ -73,25 +81,19 @@ export class LoginComponent {
       const password = this.loginForm.value.password;
 
       if (this.loginForm.value.rememberMe) {
-        this.authservice.login(username, password).subscribe({
+        this.authservice.login(username, password)?.subscribe({
           next: (res) => {
-            console.log(res);
             localStorage.setItem('credentials', JSON.stringify({ res }));
-            this.goToDashboard()
-          },
-          error: (err) => {
-            this.alertComponent.error(err)
+            this.goToDashboard();
           },
         });
       } else {
         localStorage.removeItem('credentials');
-        this.loginForm.reset();
       }
     }
   }
 
   goToDashboard() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate([ROUTES.DASHBOARD]);
   }
-
 }

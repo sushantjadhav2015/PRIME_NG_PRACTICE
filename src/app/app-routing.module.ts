@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './app-layout/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
 import { AdminComponent } from './app-layout/admin/admin.component';
+import { ROUTES } from './shared-module/constants/routes-constant';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
+  { path: ROUTES.LOGIN, component: LoginComponent },
   {
     path: 'admin',
     component: AdminComponent,
@@ -20,7 +21,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: '/admin/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: ROUTES.LOGIN, pathMatch: 'full' },
 ];
 
 @NgModule({

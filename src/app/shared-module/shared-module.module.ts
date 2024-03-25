@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { primeNG } from './primeNG-modules/primeNG';
-import { AlertComponent } from './component/alert/alert.component';
+import { AlertComponent } from './component/alert-dialog-dynamically/alert.component';
 import { SpinnerComponent } from './component/spinner/spinner.component';
 import { PlaceholderDirective } from './directive/placeholder.directive';
-import { AlertService } from './component/alert/alert.service';
+import { AlertService } from './component/alert-dialog-dynamically/alert.service';
 import { MessageService } from 'primeng/api';
-import { DialogService, DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
+import {
+  DialogService,
+  DynamicDialogRef,
+  DynamicDialogConfig,
+} from 'primeng/dynamicdialog';
 
 const component = [SpinnerComponent, PlaceholderDirective];
 @NgModule({
   declarations: [...component],
   imports: [...primeNG],
   exports: [...primeNG, ...component],
-  providers:[
-    DialogService, 
-    MessageService, 
+  providers: [
+    DialogService,
+    MessageService,
     DynamicDialogRef,
     DynamicDialogConfig,
-    AlertService
-  ]
-
+    AlertService,
+  ],
 })
 export class SharedModuleModule {}

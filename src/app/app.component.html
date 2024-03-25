@@ -1,5 +1,16 @@
-<!-- <div class="card flex justify-content-center">
-  <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="suggestions" (completeMethod)="search($event)">
-  </p-autoComplete>
+<!-- <div class="ad-banner-example">
+    <ng-container *ngComponentOutlet="
+      currentAd.component;
+      inputs: currentAd.inputs;
+    " />
 </div> -->
+<p-toast></p-toast>
 <router-outlet></router-outlet>
+
+<!-- <div class="ad-banner-example">
+    <ng-container *ngComponentOutlet="
+      currentAd.component;
+      inputs: currentAd.inputs;
+    " />
+<button (click)="displayNextAd()">Next</button>
+</div> -->

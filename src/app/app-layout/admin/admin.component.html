@@ -1,14 +1,15 @@
 <div class="wrapper">
   <app-side-nav [isCollapsed]="isSidebarCollapsed"></app-side-nav>
   <div class="main">
-      <p-menubar>
-        <ng-template class="custom-menubar" pTemplate="start">
-          <p-button icon="pi pi-bars" data-bs-theme="dark" [rounded]="true" [text]="true" (click)="toggleSidebar()"></p-button>
-        </ng-template>  
+    <p-menubar>
+      <ng-template class="custom-menubar" pTemplate="start">
+        <p-button icon="pi pi-bars" data-bs-theme="dark" [rounded]="true" [text]="true" (click)="toggleSidebar()">
+        </p-button>
+      </ng-template>
     </p-menubar>
     <main class="content px-5 py-5">
       <div class="container-fluid">
-        <alert></alert>
+        <!-- <p-toast key="adminToast"></p-toast> -->
         <router-outlet></router-outlet>
       </div>
     </main>
