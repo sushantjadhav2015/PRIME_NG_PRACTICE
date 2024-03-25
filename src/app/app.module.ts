@@ -16,14 +16,13 @@ import {
   SocialLoginModule,
 } from '@abacritt/angularx-social-login';
 import { AppLayoutModule } from './app-layout/app-layout.module';
-import { ToastComponent } from './toast/toast.component';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { NgComponentOutlet } from '@angular/common';
 // import { SharedModuleModule } from './shared-module/shared-module.module';
 
 @NgModule({
-  declarations: [AppComponent, ToastComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
