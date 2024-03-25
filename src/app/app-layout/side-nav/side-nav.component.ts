@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { ROUTES } from '../../shared-module/constants/routes-constant';
 
 @Component({
   selector: 'app-side-nav',
@@ -21,7 +22,7 @@ export class SideNavComponent implements OnInit {
     {
       label: 'Dashboard',
       icon: 'pi pi-fw pi-home',
-      routerLink: '/dashboard',
+      routerLink: ROUTES.DASHBOARD,
       routerLinkActive: true,
     },
     {
