@@ -26,13 +26,13 @@ export class SideNavComponent implements OnInit {
       routerLinkActive: true,
     },
     {
-      label: 'Transfers',
+      label: 'Events',
       icon: 'pi pi-fw pi-car',
       expanded: false,
       items: [
         {
-          label: 'Reservations',
-          routerLink: '/reservations',
+          label: 'Venue',
+          routerLink: ROUTES.VENUE,
           routerLinkActive: true,
         },
         { label: 'Drivers', routerLink: '/drivers', routerLinkActive: true },

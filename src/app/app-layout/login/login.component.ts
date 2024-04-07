@@ -38,14 +38,14 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authservice: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router,
+    private router: Router
   ) {}
   socialAuthService = inject(SocialAuthService);
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['sushant@gmail.com', Validators.required],
+      password: ['123456', Validators.required],
       rememberMe: [false],
     });
 

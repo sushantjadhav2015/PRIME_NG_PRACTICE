@@ -1,0 +1,97 @@
+<form [formGroup]="shapeForm" (ngSubmit)="onSubmit()" class="p-grid p-fluid">
+  <!-- Shape Type Dropdown -->
+  <div class="p-col-12">
+    <div><label for="shapeType">Select Shape:</label></div>
+    <p-dropdown formControlName="type" [options]="shapeType" optionLabel="value" placeholder="Select a Shape Type">
+    </p-dropdown>
+  </div>
+
+  <!-- Dimension Inputs -->
+  <div formGroupName="dimensions" class="p-col-12">
+    <!-- Rectangle -->
+    <div *ngIf="shapeForm.value.type.value === 'Rectangle'" class="p-grid">
+      <div class="p-col-12 p-md-6">
+        <label for="width">Width:</label>
+        <input type="number" pInputText formControlName="width" id="width">
+      </div>
+      <div class="p-col-12 p-md-6">
+        <label for="height">Height:</label>
+        <input type="number" pInputText formControlName="height" id="height">
+      </div>
+    </div>
+
+    <!-- Circle -->
+    <div *ngIf="shapeForm.value.type.value === 'Circle'" class="p-col-12">
+      <label for="radius">Radius:</label>
+      <input type="number" pInputText formControlName="radius" id="radius">
+    </div>
+
+    <!-- Triangle -->
+    <div *ngIf="shapeForm.value.type.value === 'Triangle'">
+      <div class="p-col-12 p-md-6">
+        <label for="base">Base:</label>
+        <input type="number" pInputText formControlName="base" id="base">
+      </div>
+      <div class="p-col-12 p-md-6">
+        <label for="heightTriangle">Height:</label>
+        <input type="number" pInputText formControlName="heightTriangle" id="heightTriangle">
+      </div>
+    </div>
+
+    <div *ngIf="shapeForm.value.type.value === 'Square'">
+      <label for="side">Side:</label>
+      <input type="number" pInputText formControlName="side" id="side">
+    </div>
+
+    <div *ngIf="shapeForm.value.type.value === 'Parallelogram'">
+      <div class="p-col-12 p-md-6">
+        <label for="width">Width:</label>
+        <input type="number" pInputText formControlName="width" id="width">
+      </div>
+      <div class="p-col-12 p-md-6">
+        <label for="heightParallelogram">Height:</label>
+        <input type="number" pInputText formControlName="heightParallelogram" id="heightParallelogram">
+      </div>
+    </div>
+
+    <div *ngIf="shapeForm.value.type.value === 'Rhombus'">
+      <label for="side">Side:</label>
+      <input type="number" pInputText formControlName="side" id="side">
+    </div>
+
+    <div *ngIf="shapeForm.value.type.value === 'Trapezium'">
+      <div class="p-col-12 p-md-6">
+        <label for="sideTrapeziumTop">Top Side:</label>
+        <input type="number" pInputText formControlName="sideTrapeziumTop" id="sideTrapeziumTop">
+      </div>
+      <div class="p-col-12 p-md-6">
+        <label for="sideTrapeziumBottom">Bottom Side:</label>
+        <input type="number" pInputText formControlName="sideTrapeziumBottom" id="sideTrapeziumBottom">
+      </div>
+      <div class="p-col-12 p-md-6">
+        <label for="heightTrapezium">Height:</label>
+        <input type="number" pInputText formControlName="heightTrapezium" id="heightTrapezium">
+      </div>
+    </div>
+
+    <div *ngIf="shapeForm.value.type.value === 'Hexagon' || shapeForm.value.type.value === 'Polygon'">
+      <div class="p-col-12 p-md-6">
+        <label for="numOfSides">Number of Sides:</label>
+        <input type="number" pInputText formControlName="numOfSides" id="numOfSides">
+      </div>
+      <div class="p-col-12 p-md-6">
+        <label for="side">Side Length:</label>
+        <input type="number" pInputText formControlName="side" id="side">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Submit Button -->
+  <div class="p-col-12">
+    <button type="submit" [disabled]="!shapeForm.valid">Create Shape</button>
+  </div>
+
+  <!-- Display the created shape -->
+  <div *ngIf="createdShape" class="p-col-12" [innerHTML]="createdShape"></div>
+</form>

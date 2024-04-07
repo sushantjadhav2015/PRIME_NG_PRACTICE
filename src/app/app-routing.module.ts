@@ -19,6 +19,13 @@ const routes: Routes = [
             (m) => m.DashboardModule
           ),
       },
+      {
+        path: 'events',
+        loadChildren: () =>
+          import('./pages/events/events.module').then(
+            (m) => m.EventsModule
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: ROUTES.LOGIN, pathMatch: 'full' },
