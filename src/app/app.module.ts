@@ -19,6 +19,7 @@ import { AppLayoutModule } from './app-layout/app-layout.module';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { NgComponentOutlet } from '@angular/common';
+import { EventsModule } from './pages/events/events.module';
 // import { SharedModuleModule } from './shared-module/shared-module.module';
 
 @NgModule({
@@ -32,7 +33,7 @@ import { NgComponentOutlet } from '@angular/common';
     AppLayoutModule,
     // SharedModuleModule
     ToastModule,
-    NgComponentOutlet
+    NgComponentOutlet,
   ],
   providers: [
     MessageService,
@@ -66,7 +67,7 @@ import { NgComponentOutlet } from '@angular/common';
           console.error(err);
         },
       } as SocialAuthServiceConfig,
-    }
+    },
   ],
   bootstrap: [AppComponent],
 })

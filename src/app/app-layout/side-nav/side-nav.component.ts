@@ -6,17 +6,16 @@ import { ROUTES } from '../../shared-module/constants/routes-constant';
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
-  styleUrl: './side-nav.component.scss'
+  styleUrl: './side-nav.component.scss',
 })
 export class SideNavComponent implements OnInit {
   @Input() isCollapsed!: boolean;
-  
 
   constructor(
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute
   ) {}
-  
+
   items: MenuItem[] = [
     // { label: 'Get Started', icon: 'pi pi-fw pi-box' },
     {
@@ -35,7 +34,11 @@ export class SideNavComponent implements OnInit {
           routerLink: ROUTES.VENUE,
           routerLinkActive: true,
         },
-        { label: 'Drivers', routerLink: '/drivers', routerLinkActive: true },
+        {
+          label: 'Signals',
+          routerLink: ROUTES.SIGNAL,
+          routerLinkActive: true,
+        },
         { label: 'Contacts', routerLink: '/contacts', routerLinkActive: true },
         { label: 'Trips', routerLink: '/trips', routerLinkActive: true },
         {

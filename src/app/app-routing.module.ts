@@ -6,7 +6,6 @@ import { AdminComponent } from './app-layout/admin/admin.component';
 import { ROUTES } from './shared-module/constants/routes-constant';
 
 const routes: Routes = [
-  // { path: '', component: LoginComponent },
   { path: ROUTES.LOGIN, component: LoginComponent },
   {
     path: 'admin',
@@ -28,7 +27,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: ROUTES.LOGIN, pathMatch: 'full' },
+  // { path: '**', redirectTo: ROUTES.LOGIN, pathMatch: 'full' },
 ];
 
 @NgModule({

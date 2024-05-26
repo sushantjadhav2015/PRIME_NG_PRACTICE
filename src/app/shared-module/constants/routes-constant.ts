@@ -1,6 +1,9 @@
 export const ROUTES = {
-    LOGIN: 'login',
-    DASHBOARD: '/admin/dashboard',
-    VENUE: '/admin/events',
-}
-  
+  LOGIN: 'login',
+//  DASHBOARD MODULE
+  DASHBOARD: '/admin/dashboard',
+
+//  EVENTS MODULE
+  VENUE: '/admin/events',
+  SIGNAL: '/admin/events/signal'
+};
